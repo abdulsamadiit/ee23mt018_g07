@@ -26,6 +26,21 @@ Your program should also listen for incoming data on the UART with the same baud
 3. Configure UART for Reception
    (we used UART 7 & UART 5)
 
+## Baud Rate
+
+UART Baud Rate =  ( f / 16 x baud divisor) 
+
+Where f is the clock frequency of the UART module which is known and equal to system frequency. The TM4C123 Tiva C launchpad has an onboard 16MHz crystal. Hence f = 16MHz. 
+
+Baud divisor is the value that will be loaded to baud control registers such as UARTIBRD and UARTFBRD.
+
+9600 =  (16MHz / 16 x baud divisor) 
+
+Baud divisor = 1000000/9600 = 104.1667
+
+Value for the fractional baud rate register can be calculated by multiplying fraction value with 64 and adding 0.5. 
+
+0.166 x 64 + 0.5 = 11
 ## Document Referred:-
 1. TM4C123GH6PM microcontroller datasheet 
 2. Cortex-M4 Technical Reference Manual
